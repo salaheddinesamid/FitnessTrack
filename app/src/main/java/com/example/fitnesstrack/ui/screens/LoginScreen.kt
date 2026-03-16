@@ -30,8 +30,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.fitnesstrack.R
 import com.example.fitnesstrack.ui.components.LoginButton
+import com.example.fitnesstrack.ui.components.NavBar
 import com.example.fitnesstrack.ui.theme.FitnessTrackTheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -39,7 +41,9 @@ import com.example.fitnesstrack.ui.theme.FitnessTrackTheme
 fun LoginScreen(
     navController : NavController
 ){
-    Scaffold()
+    Scaffold(
+        bottomBar = { NavBar(navController) }
+    )
     {
         LoginComposable(
             onLoginSuccess = { navController.navigate("home") },
@@ -168,4 +172,12 @@ fun LoginComposablePreview() {
         LoginComposable(onLoginSuccess = {}, onRegisterClick = {})
     }
     //LoginComposable(onLoginSuccess = {}, onRegisterClick = {})
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LoginScreenPreview(){
+    FitnessTrackTheme() {
+        LoginScreen(navController = rememberNavController())
+    }
 }
