@@ -15,5 +15,9 @@ class LoginViewModel {
     var errorMessage by mutableStateOf("")
         private set
 
-    fun login(){}
+    fun login(){
+        if (email == "s@gmail.com" && password == "s") {
+            loginSuccessful = true
+        }
+    }
 }
