@@ -19,12 +19,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.fitnesstrack.R
+import com.example.fitnesstrack.ui.components.RegularCard
 import com.example.fitnesstrack.ui.components.Swipeable
 import com.example.fitnesstrack.ui.theme.FitnessTrackTheme
 
 data class Item(
     val title: String,
     val subtitle: String
+)
+
+val workouts = listOf(
+    Item("Full Body Workout", "Beginner"),
+    Item("HIIT Training", "Intermediate"),
+    Item("Push Pull Legs", "Advanced"),
+    Item("Core Workout", "All Levels")
 )
 
 val meals = listOf(
@@ -44,7 +52,8 @@ fun ProfileScreen(){
             verticalArrangement = Arrangement.Center
         ) {
             ProfilePicture()
-
+            FavoriteWorkouts(workouts)
+            FavoriteMeals(meals)
             Spacer(modifier = Modifier.height(20.dp))
         }
     }
@@ -60,10 +69,13 @@ fun FavoriteWorkouts(
 
 @Composable
 fun FavoriteMeals(
-    meals : List<@Composable () -> Unit>
+    meals : List<Item>
 ){
     Column() {
-        Swipeable(meals)
+        val cards = meals.map { meal -> RegularCard(meal) }
+        Swipeable(
+            pages = cards
+        )
     }
 }
 
