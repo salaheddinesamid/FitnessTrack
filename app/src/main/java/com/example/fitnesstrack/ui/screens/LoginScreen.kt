@@ -33,7 +33,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.fitnesstrack.R
 import com.example.fitnesstrack.ui.components.LoginButton
-import com.example.fitnesstrack.ui.components.NavBar
 import com.example.fitnesstrack.ui.theme.FitnessTrackTheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -42,7 +41,6 @@ fun LoginScreen(
     navController : NavController
 ){
     Scaffold(
-        bottomBar = { NavBar(navController) }
     )
     {
         LoginComposable(

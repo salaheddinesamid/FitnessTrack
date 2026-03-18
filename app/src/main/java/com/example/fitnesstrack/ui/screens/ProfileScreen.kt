@@ -52,8 +52,6 @@ fun ProfileScreen(){
             verticalArrangement = Arrangement.Center
         ) {
             ProfilePicture()
-            FavoriteWorkouts(workouts)
-            FavoriteMeals(meals)
             Spacer(modifier = Modifier.height(20.dp))
         }
     }
@@ -71,12 +69,7 @@ fun FavoriteWorkouts(
 fun FavoriteMeals(
     meals : List<Item>
 ){
-    Column() {
-        val cards = meals.map { meal -> RegularCard(meal) }
-        Swipeable(
-            pages = cards
-        )
-    }
+
 }
 
 @Composable
